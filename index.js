@@ -30,13 +30,18 @@ mongoose
         console.log(rest.title);
         return Recipe.insertMany(data);
       })
-      .then(() => {
+      .then((title) => {
+          title.forEach((element) => {
+          console.log(element.title)
+          });
+        })   
+       .then(()=>{  
        return Recipe.updateOne(
           { title: "Rigatoni alla Genovese" },
           { duration: 100 },
-        );
+       );
       })
-      .then(()=>{
+      .then(()=> {
         console.log("File Updated!");
         return Recipe.deleteOne(
           {title: "Carrot Cake" }
